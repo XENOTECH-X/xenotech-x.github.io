@@ -53,17 +53,18 @@
     .links {
       display: flex;
       flex-direction: column;
-      gap: 35px; /* increased vertical spacing between buttons */
+      gap: 35px;
       margin: 0 auto;
       max-width: 700px;
     }
 
-    .links a {
+    .links a,
+    .dropdown-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px; /* space between icon and text */
-      padding: 18px 25px; /* slightly bigger buttons */
+      gap: 35px;
+      padding: 18px 25px;
       background-color: #8B0000;
       color: #fff;
       text-decoration: none;
@@ -71,9 +72,11 @@
       border-radius: 12px;
       box-shadow: 0 5px 15px rgba(139, 0, 0, 0.5);
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    .links a:hover {
+    .links a:hover,
+    .dropdown-btn:hover {
       background-color: #6B0000;
       transform: scale(1.07);
       box-shadow: 0 8px 20px rgba(107, 0, 0, 0.7);
@@ -83,6 +86,43 @@
       width: 35px;
       height: 35px;
     }
+
+    /* Dropdown styling */
+    .dropdown {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+              gap: 20px;
+      align-items: center;
+    }
+
+    .dropdown-content {
+      display: none;
+        gap: 10px;
+      flex-direction: column;
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      margin-top: 10px;
+      width: 80%;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .dropdown-content a {
+      padding: 12px;
+        gap: 10px;
+      background: none;
+      border-radius: 10;
+      box-shadow: none;
+      font-size: 15px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #8B0000;
+    }
+
+    .dropdown.active .dropdown-content {
+      display: flex;
+    }
   </style>
 </head>
 
@@ -91,7 +131,7 @@
     <img src="imgs/profile.png" alt="Profile Picture" class="profile-pic">
     <div class="links">
       <a href="https://gx-gamescrack.github.io" target="_blank">
-        <img src="imgs/gx-gamescrack.png" alt="Google Icon">GX-Gamescrack V2
+        <img src="imgs/gx-gamescrack.png" alt="gx-gamescrack Icon">GX-Gamescrack V2
       </a>
       <a href="https://xenotech-x.github.io/GX-Launcher" target="_blank">
         <img src="imgs/gx-launcher.png" alt="gx-launcher Icon">GX-Launcher
@@ -102,12 +142,25 @@
       <a href="https://www.github.com/xXJ0NXx" target="_blank">
         <img src="imgs/github.png" alt="GitHub Icon">My GitHub
       </a>
-      <a href="https://sites.google.com/view/gx-gamescrack" target="_blank">
-        <img src="imgs/gx-gamescrack.png" alt="Google Icon">GX-Gamescrack-old
-      </a>
+
+      <!-- Dropdown Menu -->
+      <div class="dropdown">
+        <div class="dropdown-btn">
+        Archived Links ▼
+        </div>
+        <div class="dropdown-content">
+          <a href="https://sites.google.com/view/gx-gamescrack" target="_blank">GX-Gamescrack (Old)</a>
+        </div>
+      </div>
     </div>
     <h1>Built By Jon Stearns</h1>
   </div>
+
+  <script>
+    document.querySelector('.dropdown-btn').addEventListener('click', () => {
+      document.querySelector('.dropdown').classList.toggle('active');
+    });
+  </script>
 </body>
 
 </html>
