@@ -26,9 +26,9 @@
       border-radius: 25px;
       max-width: 800px;
       width: 90%;
-      max-height: 650px;
       box-shadow: 0 10px 30px rgba(139, 0, 0, 0.6), 0 4px 20px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease;
+      overflow: hidden;
     }
 
     .container:hover {
@@ -92,28 +92,32 @@
       position: relative;
       display: flex;
       flex-direction: column;
-              gap: 20px;
+      gap: 20px;
       align-items: center;
+      width: 100%;
     }
 
     .dropdown-content {
-      display: none;
-        gap: 10px;
+      display: flex;
       flex-direction: column;
       background-color: #2a2a2a;
       border-radius: 10px;
       margin-top: 10px;
       width: 80%;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
     }
 
     .dropdown-content a {
       padding: 12px;
-        gap: 10px;
+      gap: 10px;
       background: none;
-      border-radius: 10;
       box-shadow: none;
       font-size: 15px;
+      border-radius: 10px;
     }
 
     .dropdown-content a:hover {
@@ -121,7 +125,8 @@
     }
 
     .dropdown.active .dropdown-content {
-      display: flex;
+      max-height: 300px; /* expands enough to fit content */
+      opacity: 1;
     }
   </style>
 </head>
@@ -146,7 +151,7 @@
       <!-- Dropdown Menu -->
       <div class="dropdown">
         <div class="dropdown-btn">
-        Archived Links ▼
+          Archived Links ▼
         </div>
         <div class="dropdown-content">
           <a href="https://sites.google.com/view/gx-gamescrack" target="_blank">GX-Gamescrack (Old)</a>
